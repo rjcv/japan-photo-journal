@@ -57,7 +57,7 @@
     .city-section { margin-top:clamp(1rem, 3vw, 2.5rem); scroll-margin-top:5.5rem; }
     .city-hero { min-height: 82svh; margin-bottom: clamp(1rem, 2vw, 1.5rem); color: white; position: relative; overflow: hidden; display: flex; align-items: end; background: center 46% / cover fixed no-repeat; }
     .city-hero.osaka { background-image: url('assets/optimized/headers/osaka-05.webp'); }
-    .city-hero.quioto { background-image:linear-gradient(120deg, rgba(43,55,44,.28), rgba(48,35,28,.6)), url('assets/optimized/headers/cabecalho-japao.webp'); background-position:center 45%; }
+    .city-hero.kyoto { background-image:linear-gradient(120deg, rgba(43,55,44,.18), rgba(48,35,28,.42)), url('assets/optimized/headers/kyoto.webp'); background-position:center 48%; }
     .city-hero.tokyo { background-image:url('assets/optimized/headers/cabecalho-japao.webp'); background-position:center 58%; }
     .city-hero::before { content:""; position:absolute; inset:0; background: linear-gradient(0deg, rgba(10,12,11,.72) 0%, rgba(10,12,11,.12) 62%), linear-gradient(90deg, rgba(10,12,11,.28), transparent 55%); }
     .city-hero-content { position:relative; z-index:1; width:100%; padding:clamp(1.5rem, 4vw, 4rem); display:grid; grid-template-columns:1fr 2fr; gap:4vw; align-items:end; }
@@ -140,13 +140,13 @@
         </div>
       </div>
     </section>
-    <div class="route" aria-label="Rota da viagem"><span>Osaka</span><span>Quioto</span><span>Tokyo</span></div>
+    <div class="route" aria-label="Rota da viagem"><span>Osaka</span><span>Kyoto</span><span>Tokyo</span></div>
 
     <section class="gallery" id="fotografias">
       <div class="gallery-head">
         <p>Fragmentos do caminho</p>
         <nav class="filter" aria-label="Ir para o álbum de uma cidade">
-          <a class="active" data-city-link="all" href="#fotografias" aria-current="true">Todas</a><a data-city-link="osaka" href="#osaka">Osaka</a><a data-city-link="quioto" href="#quioto">Quioto</a><a data-city-link="tokyo" href="#tokyo">Tokyo</a>
+          <a class="active" data-city-link="all" href="#fotografias" aria-current="true">Todas</a><a data-city-link="osaka" href="#osaka">Osaka</a><a data-city-link="kyoto" href="#kyoto">Kyoto</a><a data-city-link="tokyo" href="#tokyo">Tokyo</a>
         </nav>
       </div>
       <section class="city-section" id="osaka" data-city="osaka" aria-labelledby="osaka-title">
@@ -210,17 +210,37 @@
         <button class="shot tall" data-category="osaka" data-place="Osaka · 48" data-caption="Caminho na sombra" aria-label="Abrir fotografia: caminho no bosque"><img loading="lazy" src="assets/optimized/thumbs/osaka-48.webp" data-full="assets/optimized/full/osaka-48.webp" decoding="async" alt="Caminho curvo atravessa um bosque verde sob luz filtrada"></button>
         </div>
       </section>
-      <section class="city-section" id="quioto" data-city="quioto" aria-labelledby="quioto-title">
-        <header class="city-hero quioto">
+      <section class="city-section" id="kyoto" data-city="kyoto" aria-labelledby="kyoto-title">
+        <header class="city-hero kyoto">
           <div class="city-hero-content">
-            <span class="section-tag">Capítulo II · Quioto</span>
+            <span class="section-tag">Capítulo II · Kyoto</span>
             <div class="city-hero-copy">
-              <h2 id="quioto-title">O ritmo<br>do silêncio</h2>
-              <p>Entre jardins, madeira antiga e ruas estreitas, Quioto convida a abrandar e a reparar nos pequenos gestos.</p>
+              <h2 id="kyoto-title">O ritmo<br>do silêncio</h2>
+              <p>Entre jardins, madeira antiga e ruas estreitas, Kyoto convida a abrandar e a reparar nos pequenos gestos.</p>
             </div>
           </div>
         </header>
-        <div class="album-empty"><p>O álbum de Quioto está pronto para receber as tuas fotografias.</p></div>
+        <div class="grid">
+        <button class="shot tall" data-category="kyoto" data-place="Kyoto · 01" data-caption="O último sol sobre Yasaka" aria-label="Abrir fotografia: pagode ao pôr do sol"><img loading="lazy" src="assets/optimized/thumbs/kyoto-01.webp" data-full="assets/optimized/full/kyoto-01.webp" decoding="async" alt="Pagode de Yasaka recortado contra o pôr do sol em Kyoto"></button>
+        <button class="shot feature" data-category="kyoto" data-place="Kyoto · 02" data-caption="A cidade ao entardecer" aria-label="Abrir fotografia: vista de Kyoto ao entardecer"><img loading="lazy" src="assets/optimized/thumbs/kyoto-02.webp" data-full="assets/optimized/full/kyoto-02.webp" decoding="async" alt="Vista panorâmica de Kyoto a partir de um templo vermelho ao entardecer"></button>
+        <button class="shot side" data-category="kyoto" data-place="Kyoto · 03" data-caption="Curry ao balcão" aria-label="Abrir fotografia: prato de caril japonês"><img loading="lazy" src="assets/optimized/thumbs/kyoto-03.webp" data-full="assets/optimized/full/kyoto-03.webp" decoding="async" alt="Prato de caril japonês servido ao balcão de um restaurante em Kyoto"></button>
+        <button class="shot tall" data-category="kyoto" data-place="Kyoto · 04" data-caption="Ao encontro da montanha" aria-label="Abrir fotografia: rua tradicional de Kyoto"><img loading="lazy" src="assets/optimized/thumbs/kyoto-04.webp" data-full="assets/optimized/full/kyoto-04.webp" decoding="async" alt="Rua tradicional de Kyoto conduz à montanha sob uma bandeira japonesa"></button>
+        <button class="shot tall" data-category="kyoto" data-place="Kyoto · 05" data-caption="Jardim sob o céu de verão" aria-label="Abrir fotografia: jardim de templo"><img loading="lazy" src="assets/optimized/thumbs/kyoto-05.webp" data-full="assets/optimized/full/kyoto-05.webp" decoding="async" alt="Jardim verde enquadra o telhado de um templo sob nuvens de verão"></button>
+        <button class="shot tall" data-category="kyoto" data-place="Kyoto · 06" data-caption="Luz entre as nuvens" aria-label="Abrir fotografia: jardim e nuvens"><img loading="lazy" src="assets/optimized/thumbs/kyoto-06.webp" data-full="assets/optimized/full/kyoto-06.webp" decoding="async" alt="Pinheiros de um jardim japonês sob um céu de nuvens luminosas"></button>
+        <button class="shot tall" data-category="kyoto" data-place="Kyoto · 07" data-caption="A cidade em dia de festa" aria-label="Abrir fotografia: rua movimentada de Kyoto"><img loading="lazy" src="assets/optimized/thumbs/kyoto-07.webp" data-full="assets/optimized/full/kyoto-07.webp" decoding="async" alt="Rua movimentada de Kyoto com um carro tradicional ao fundo"></button>
+        <button class="shot wide" data-category="kyoto" data-place="Kyoto · 08" data-caption="Vermelho ao cair da noite" aria-label="Abrir fotografia: templo vermelho ao anoitecer"><img loading="lazy" src="assets/optimized/thumbs/kyoto-08.webp" data-full="assets/optimized/full/kyoto-08.webp" decoding="async" alt="Porta e pagode vermelhos diante da montanha ao anoitecer"></button>
+        <button class="shot wide" data-category="kyoto" data-place="Kyoto · 09" data-caption="Jardins até às montanhas" aria-label="Abrir fotografia: jardins de Kyoto"><img loading="lazy" src="assets/optimized/thumbs/kyoto-09.webp" data-full="assets/optimized/full/kyoto-09.webp" decoding="async" alt="Vista elevada sobre jardins, telhados tradicionais e montanhas de Kyoto"></button>
+        <button class="shot tall" data-category="kyoto" data-place="Kyoto · 10" data-caption="Um instante de recolhimento" aria-label="Abrir fotografia: momento no templo"><img loading="lazy" src="assets/optimized/thumbs/kyoto-10.webp" data-full="assets/optimized/full/kyoto-10.webp" decoding="async" alt="Homem recolhido junto a grandes elementos metálicos de um templo"></button>
+        <button class="shot wide" data-category="kyoto" data-place="Kyoto · 11" data-caption="Kyoto antes da noite" aria-label="Abrir fotografia: horizonte de Kyoto"><img loading="lazy" src="assets/optimized/thumbs/kyoto-11.webp" data-full="assets/optimized/full/kyoto-11.webp" decoding="async" alt="Horizonte de Kyoto e a sua torre sob a luz suave do pôr do sol"></button>
+        <button class="shot tall" data-category="kyoto" data-place="Kyoto · 12" data-caption="Telhados entre os pinheiros" aria-label="Abrir fotografia: arquitetura e jardim"><img loading="lazy" src="assets/optimized/thumbs/kyoto-12.webp" data-full="assets/optimized/full/kyoto-12.webp" decoding="async" alt="Telhados de arquitetura tradicional surgem entre pinheiros cuidados"></button>
+        <button class="shot tall" data-category="kyoto" data-place="Kyoto · 13" data-caption="Bonsai e reflexos" aria-label="Abrir fotografia: bonsai numa montra"><img loading="lazy" src="assets/optimized/thumbs/kyoto-13.webp" data-full="assets/optimized/full/kyoto-13.webp" decoding="async" alt="Bonsai exposto numa montra entre reflexos da rua de Kyoto"></button>
+        <button class="shot tall" data-category="kyoto" data-place="Kyoto · 14" data-caption="Geometria vermelha" aria-label="Abrir fotografia: pagode vermelho"><img loading="lazy" src="assets/optimized/thumbs/kyoto-14.webp" data-full="assets/optimized/full/kyoto-14.webp" decoding="async" alt="Pagode vermelho visto de baixo contra um céu azul limpo"></button>
+        <button class="shot half" data-category="kyoto" data-place="Kyoto · 15" data-caption="Na cozinha" aria-label="Abrir fotografia: cozinheira em Kyoto"><img loading="lazy" src="assets/optimized/thumbs/kyoto-15.webp" data-full="assets/optimized/full/kyoto-15.webp" decoding="async" alt="Cozinheira trabalha diante de uma parede de tijolo vermelho"></button>
+        <button class="shot tall" data-category="kyoto" data-place="Kyoto · 16" data-caption="Passos ao entardecer" aria-label="Abrir fotografia: visitantes junto ao pagode"><img loading="lazy" src="assets/optimized/thumbs/kyoto-16.webp" data-full="assets/optimized/full/kyoto-16.webp" decoding="async" alt="Visitantes caminham junto a um pagode vermelho ao entardecer"></button>
+        <button class="shot tall" data-category="kyoto" data-place="Kyoto · 17" data-caption="Pedra, água e pinheiros" aria-label="Abrir fotografia: jardim japonês"><img loading="lazy" src="assets/optimized/thumbs/kyoto-17.webp" data-full="assets/optimized/full/kyoto-17.webp" decoding="async" alt="Lago, rochas e pinheiros compõem um jardim japonês sereno"></button>
+        <button class="shot tall" data-category="kyoto" data-place="Kyoto · 18" data-caption="Verde de verão" aria-label="Abrir fotografia: árvore num jardim"><img loading="lazy" src="assets/optimized/thumbs/kyoto-18.webp" data-full="assets/optimized/full/kyoto-18.webp" decoding="async" alt="Árvore verde iluminada pelo sol num jardim de Kyoto"></button>
+        <button class="shot tall" data-category="kyoto" data-place="Kyoto · 19" data-caption="Pagode entre a floresta" aria-label="Abrir fotografia: pagode distante"><img loading="lazy" src="assets/optimized/thumbs/kyoto-19.webp" data-full="assets/optimized/full/kyoto-19.webp" decoding="async" alt="Pequeno pagode vermelho surge ao longe entre a floresta densa"></button>
+        </div>
       </section>
       <section class="city-section" id="tokyo" data-city="tokyo" aria-labelledby="tokyo-title">
         <header class="city-hero tokyo">
@@ -243,7 +263,7 @@
   </footer>
 
   <div class="lightbox" role="dialog" aria-modal="true" aria-label="Visualizador de fotografia">
-    <div class="lightbox-top"><span class="counter">01 / 48</span><button class="close" aria-label="Fechar">×</button></div>
+    <div class="lightbox-top"><span class="counter">01 / 67</span><button class="close" aria-label="Fechar">×</button></div>
     <figure><img src="" alt="Fotografia ampliada da viagem ao Japão"></figure>
     <div class="lightbox-bottom"><button class="prev" aria-label="Fotografia anterior">←</button><span class="caption"></span><button class="next" aria-label="Fotografia seguinte">→</button></div>
   </div>
