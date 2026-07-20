@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#eeeae0" />
+  <title>Entre Estações — Japão em Fotografia</title>
+  <meta name="description" content="Um diário fotográfico de uma viagem pelo Japão." />
+  <style>
+    :root {
+      --paper: #eeeae0;
+      --ink: #181a17;
+      --muted: #696b64;
+      --red: #b43127;
+      --line: rgba(24,26,23,.2);
+      --pad: clamp(1.25rem, 4vw, 4rem);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: Arial, Helvetica, sans-serif; }
+    body.no-scroll { overflow: hidden; }
+    button, a { color: inherit; }
+    button { font: inherit; }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; background: #d7d4ca; }
+    .noise { position: fixed; inset: 0; pointer-events: none; z-index: 20; opacity: .16; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E"); }
+    .nav { position: absolute; z-index: 10; inset: 0 0 auto; padding: 1.1rem var(--pad); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,.35); color: white; }
+    .brand { display: flex; gap: .8rem; align-items: center; text-decoration: none; font-weight: 700; letter-spacing: -.03em; }
+    .sun { width: 12px; height: 12px; border-radius: 50%; background: #db3b2e; display: inline-block; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a { text-decoration: none; text-transform: uppercase; font-size: .68rem; letter-spacing: .15em; }
+    .hero { min-height: 100svh; position: relative; overflow: hidden; color: white; background: #20231f; }
+    .hero::after { content:""; position:absolute; inset:0; background: linear-gradient(90deg, rgba(10,12,10,.56), transparent 62%), linear-gradient(0deg, rgba(10,10,8,.38), transparent 55%); }
+    .hero-img { position: absolute; inset: 0; background-image: url('assets/optimized/headers/cabecalho-japao.webp'); background-position: center 45%; background-size: cover; transform: scale(1.02); animation: reveal 1.3s cubic-bezier(.2,.8,.2,1) both; }
+    @keyframes reveal { from { opacity: 0; transform: scale(1.1); } }
+    .hero-content { position: absolute; z-index: 2; left: var(--pad); right: var(--pad); bottom: clamp(2.5rem, 8vh, 6rem); display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 2rem; }
+    .kicker { margin: 0 0 .8rem; text-transform: uppercase; font-size: .69rem; letter-spacing: .2em; }
+    h1 { margin: 0; max-width: 900px; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(4rem, 11vw, 10.5rem); font-weight: 400; line-height: .77; letter-spacing: -.07em; }
+    h1 i { font-weight: 400; }
+    .hero-note { width: 170px; margin: 0 0 .4rem; font-size: .78rem; line-height: 1.5; }
+    .hero-index { position: absolute; z-index: 2; right: var(--pad); top: 22%; writing-mode: vertical-rl; font-family: Georgia, serif; letter-spacing: .2em; font-size: .72rem; }
+    .intro { padding: clamp(5rem, 12vw, 10rem) var(--pad); display: grid; grid-template-columns: 1fr 2fr; gap: 5vw; border-bottom: 1px solid var(--line); }
+    .section-tag { text-transform: uppercase; font-size: .67rem; letter-spacing: .18em; display: flex; align-items: center; gap: .7rem; }
+    .section-tag::before { content:""; width: 25px; height: 1px; background: currentColor; }
+    .intro-copy { max-width: 850px; }
+    .intro h2, .city-hero h2 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; }
+    .intro h2 { font-size: clamp(2.6rem, 5vw, 5.7rem); letter-spacing: -.045em; line-height: 1.02; margin: 0; }
+    .intro-foot { margin-top: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; font-size: .84rem; line-height: 1.7; color: var(--muted); }
+    .route { padding: 1rem var(--pad); display: flex; overflow-x: auto; border-bottom: 1px solid var(--line); scrollbar-width: none; }
+    .route span { white-space: nowrap; font-size: .67rem; letter-spacing: .12em; text-transform: uppercase; }
+    .route span:not(:last-child)::after { content: '→'; color: var(--red); margin: 0 2rem; }
+    .gallery { padding: var(--pad); }
+    .gallery-head { position:sticky; top:0; z-index:15; display:flex; justify-content:space-between; align-items:center; margin:0 calc(var(--pad) * -1); padding:1rem var(--pad); background:rgba(238,234,224,.92); border-bottom:1px solid var(--line); backdrop-filter:blur(12px); }
+    .gallery-head p { margin:0; font-family: Georgia, serif; font-size: 1.3rem; font-style: italic; }
+    .filter { display:flex; gap:.4rem; }
+    .filter a { border:1px solid var(--line); border-radius:99px; background:transparent; padding:.55rem .9rem; text-decoration:none; font-size:.67rem; text-transform:uppercase; letter-spacing:.08em; transition:.2s; white-space:nowrap; }
+    .filter a.active, .filter a:hover, .filter a:focus-visible { background:var(--ink); color:var(--paper); }
+    .city-section { margin-top:clamp(1rem, 3vw, 2.5rem); scroll-margin-top:5.5rem; }
+    .city-hero { min-height: 82svh; margin-bottom: clamp(1rem, 2vw, 1.5rem); color: white; position: relative; overflow: hidden; display: flex; align-items: end; background: center 46% / cover fixed no-repeat; }
+    .city-hero.osaka { background-image: url('assets/optimized/headers/osaka-05.webp'); }
+    .city-hero.quioto { background-image:linear-gradient(120deg, rgba(43,55,44,.28), rgba(48,35,28,.6)), url('assets/optimized/headers/cabecalho-japao.webp'); background-position:center 45%; }
+    .city-hero.tokyo { background-image:url('assets/optimized/headers/cabecalho-japao.webp'); background-position:center 58%; }
+    .city-hero::before { content:""; position:absolute; inset:0; background: linear-gradient(0deg, rgba(10,12,11,.72) 0%, rgba(10,12,11,.12) 62%), linear-gradient(90deg, rgba(10,12,11,.28), transparent 55%); }
+    .city-hero-content { position:relative; z-index:1; width:100%; padding:clamp(1.5rem, 4vw, 4rem); display:grid; grid-template-columns:1fr 2fr; gap:4vw; align-items:end; }
+    .city-hero-copy { max-width:850px; }
+    .city-hero h2 { margin:0; font-size:clamp(4rem, 10vw, 10rem); line-height:.79; letter-spacing:-.065em; }
+    .city-hero p { max-width:430px; margin:1.2rem 0 0; font-size:.85rem; line-height:1.65; }
+    .album-empty { min-height:28vh; display:grid; place-items:center; text-align:center; border:1px solid var(--line); color:var(--muted); }
+    .album-empty p { max-width:360px; margin:0; font-family:Georgia,serif; font-size:clamp(1.3rem, 2.5vw, 2rem); font-style:italic; line-height:1.3; }
+    .grid { display:grid; grid-template-columns:repeat(12, 1fr); grid-auto-flow:dense; gap:clamp(.7rem, 1.5vw, 1.4rem); }
+    .shot { border: 0; padding: 0; background: transparent; cursor: zoom-in; text-align: left; overflow:hidden; position:relative; min-height: 260px; }
+    .shot img { transition: transform .7s cubic-bezier(.2,.8,.2,1), filter .3s; }
+    .shot:hover img { transform: scale(1.035); }
+    .shot::after { content: attr(data-place); position:absolute; left:1rem; bottom:1rem; color:white; font-size:.65rem; letter-spacing:.12em; text-transform:uppercase; opacity:0; transform:translateY(6px); transition:.25s; text-shadow: 0 1px 12px #000; }
+    .shot:hover::after { opacity:1; transform:none; }
+    .shot.feature { grid-column: span 7; aspect-ratio: 4/3; }
+    .shot.side { grid-column: span 5; aspect-ratio: 3/4; }
+    .shot.tall { grid-column: span 4; aspect-ratio: 3/4; }
+    .shot.wide { grid-column: span 8; aspect-ratio: 16/10; align-self:end; }
+    .shot.half { grid-column: span 6; aspect-ratio: 4/3; }
+    footer { padding: clamp(4rem, 9vw, 8rem) var(--pad) 2rem; }
+    .footer-main { display:grid; grid-template-columns:2fr 1fr; gap:3rem; border-bottom:1px solid var(--line); padding-bottom:5rem; }
+    footer h2 { margin:0; font-family:Georgia,serif; font-size:clamp(3rem, 8vw, 8rem); line-height:.86; font-weight:400; letter-spacing:-.06em; }
+    .footer-note { align-self:end; max-width:300px; font-size:.8rem; line-height:1.65; color:var(--muted); }
+    .footer-bottom { padding-top:1.4rem; display:flex; justify-content:space-between; text-transform:uppercase; font-size:.62rem; letter-spacing:.12em; }
+    .lightbox { display:none; position:fixed; z-index:30; inset:0; background:rgba(13,14,12,.96); color:white; padding:clamp(1rem,3vw,2.5rem); }
+    .lightbox.open { display:grid; grid-template-rows:auto 1fr auto; animation:fade .25s both; }
+    @keyframes fade { from { opacity:0; } }
+    .lightbox-top { display:flex; justify-content:space-between; align-items:center; font-size:.67rem; letter-spacing:.14em; text-transform:uppercase; }
+    .close { border:0; background:transparent; color:white; cursor:pointer; font-size:1.7rem; line-height:1; }
+    .lightbox figure { min-height:0; margin:1rem 0; display:flex; align-items:center; justify-content:center; }
+    .lightbox img { width:auto; max-width:100%; height:auto; max-height:76vh; object-fit:contain; }
+    .lightbox-bottom { display:flex; align-items:center; justify-content:space-between; }
+    .lightbox-bottom button { color:white; border:1px solid rgba(255,255,255,.35); background:transparent; border-radius:50%; width:42px; height:42px; cursor:pointer; }
+    .caption { font-family:Georgia,serif; font-style:italic; font-size:1.1rem; }
+    @media (max-width: 760px) {
+      .nav-links a { display:none; }
+      .hero-content { grid-template-columns:1fr; }
+      .hero-img { background-position: center; }
+      .hero-note, .hero-index { display:none; }
+      h1 { font-size:clamp(4.5rem, 23vw, 7rem); }
+      .intro { grid-template-columns:1fr; }
+      .intro-foot { grid-template-columns:1fr; }
+      .gallery-head { align-items:start; gap:1rem; flex-direction:column; }
+      .filter { overflow-x:auto; max-width:100%; }
+      .city-hero { min-height:72svh; background-attachment:scroll; background-position:center; }
+      .city-hero-content { grid-template-columns:1fr; gap:1.5rem; }
+      .city-hero h2 { font-size:clamp(4rem, 19vw, 7rem); }
+      .shot, .shot.feature, .shot.side, .shot.tall, .shot.wide, .shot.half { grid-column:span 12; }
+      .shot.feature, .shot.wide, .shot.half { aspect-ratio:4/3; }
+      .shot.side, .shot.tall { aspect-ratio:3/4; }
+      .footer-main { grid-template-columns:1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } *, *::before, *::after { animation:none!important; transition:none!important; } }
+  </style>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="hero" id="topo">
+    <div class="hero-img" aria-hidden="true"></div>
+    <nav class="nav" aria-label="Navegação principal">
+      <a class="brand" href="#topo"><span class="sun"></span> ENTRE ESTAÇÕES</a>
+      <div class="nav-links"><a href="#historia">A viagem</a><a href="#fotografias">Fotografias</a><a href="#sobre">Sobre</a></div>
+      <span aria-label="Japão em japonês">日本</span>
+    </nav>
+    <div class="hero-content">
+      <div><p class="kicker">Um diário fotográfico · Japão, 2026</p><h1>Entre<br><i>estações</i></h1></div>
+      <p class="hero-note">15 dias, 3 cidades e a vontade de reparar no que acontece entre um destino e o seguinte.</p>
+    </div>
+    <div class="hero-index">35.6762° N — 139.6503° E</div>
+  </header>
+
+  <main>
+    <section class="intro" id="historia">
+      <div><span class="section-tag">A viagem</span></div>
+      <div class="intro-copy">
+        <h2>Um país visto devagar, entre a luz do néon e o silêncio dos jardins.</h2>
+        <div class="intro-foot">
+          <p>Este diário reúne pequenos instantes encontrados pelo caminho: uma plataforma vazia, o vapor de uma cozinha, bicicletas encostadas antes da chuva.</p>
+          <p>Mais do que um roteiro, é uma memória visual do Japão — feita de contrastes, encontros e da delicadeza do quotidiano.</p>
+        </div>
+      </div>
+    </section>
+    <div class="route" aria-label="Rota da viagem"><span>Osaka</span><span>Quioto</span><span>Tokyo</span></div>
+
+    <section class="gallery" id="fotografias">
+      <div class="gallery-head">
+        <p>Fragmentos do caminho</p>
+        <nav class="filter" aria-label="Ir para o álbum de uma cidade">
+          <a class="active" data-city-link="all" href="#fotografias" aria-current="true">Todas</a><a data-city-link="osaka" href="#osaka">Osaka</a><a data-city-link="quioto" href="#quioto">Quioto</a><a data-city-link="tokyo" href="#tokyo">Tokyo</a>
+        </nav>
+      </div>
+      <section class="city-section" id="osaka" data-city="osaka" aria-labelledby="osaka-title">
+        <header class="city-hero osaka">
+          <div class="city-hero-content">
+            <span class="section-tag">Capítulo I · Osaka</span>
+            <div class="city-hero-copy">
+              <h2 id="osaka-title">Entre pontes<br>e luzes</h2>
+              <p>Uma cidade que se revela em movimento — nas ruas cheias, nas cozinhas abertas e no horizonte que se acende antes da tempestade.</p>
+            </div>
+          </div>
+        </header>
+        <div class="grid">
+        <button class="shot feature" data-category="osaka" data-place="Osaka · 01" data-caption="Ruas de Osaka" aria-label="Abrir fotografia: ruas de Osaka"><img loading="lazy" src="assets/optimized/thumbs/osaka-01.webp" data-full="assets/optimized/full/osaka-01.webp" decoding="async" alt="Rua movimentada de Osaka com letreiros e cabos elétricos"></button>
+        <button class="shot side" data-category="osaka" data-place="Osaka · 02" data-caption="A cidade ao fim da tarde" aria-label="Abrir fotografia: cidade ao fim da tarde"><img loading="lazy" src="assets/optimized/thumbs/osaka-02.webp" data-full="assets/optimized/full/osaka-02.webp" decoding="async" alt="Avenida comercial de Osaka ao fim da tarde"></button>
+        <button class="shot wide" data-category="osaka" data-place="Osaka · 03" data-caption="Tempestade sobre a cidade" aria-label="Abrir fotografia: tempestade sobre Osaka"><img loading="lazy" src="assets/optimized/thumbs/osaka-03.webp" data-full="assets/optimized/full/osaka-03.webp" decoding="async" alt="Vista panorâmica de Osaka sob nuvens de tempestade"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 04" data-caption="Castelo de Osaka, à noite" aria-label="Abrir fotografia: Castelo de Osaka"><img loading="lazy" src="assets/optimized/thumbs/osaka-04.webp" data-full="assets/optimized/full/osaka-04.webp" decoding="async" alt="Castelo de Osaka iluminado durante a noite"></button>
+        <button class="shot wide" data-category="osaka" data-place="Osaka · 05" data-caption="Pontes sobre o Yodo" aria-label="Abrir fotografia: pontes sobre o rio"><img loading="lazy" src="assets/optimized/thumbs/osaka-05.webp" data-full="assets/optimized/full/osaka-05.webp" decoding="async" alt="Vista aérea de Osaka e das pontes sobre o rio Yodo"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 06" data-caption="Sabores de rua" aria-label="Abrir fotografia: sabores de rua"><img loading="lazy" src="assets/optimized/thumbs/osaka-06.webp" data-full="assets/optimized/full/osaka-06.webp" decoding="async" alt="Vendedora a preparar comida num mercado de Osaka"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 07" data-caption="Luzes antes da chuva" aria-label="Abrir fotografia: horizonte de Osaka"><img loading="lazy" src="assets/optimized/thumbs/osaka-07.webp" data-full="assets/optimized/full/osaka-07.webp" decoding="async" alt="Horizonte urbano de Osaka sob céu carregado"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 08" data-caption="No coração de Dotonbori" aria-label="Abrir fotografia: Dotonbori"><img loading="lazy" src="assets/optimized/thumbs/osaka-08.webp" data-full="assets/optimized/full/osaka-08.webp" decoding="async" alt="Multidão e letreiros coloridos numa rua de Dotonbori"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 09" data-caption="A cidade acende-se" aria-label="Abrir fotografia: Osaka ao anoitecer"><img loading="lazy" src="assets/optimized/thumbs/osaka-09.webp" data-full="assets/optimized/full/osaka-09.webp" decoding="async" alt="Vista de Osaka ao anoitecer, com o rio em primeiro plano"></button>
+        <button class="shot half" data-category="osaka" data-place="Osaka · 10" data-caption="Depois do anoitecer" aria-label="Abrir fotografia: passeio noturno"><img loading="lazy" src="assets/optimized/thumbs/osaka-10.webp" data-full="assets/optimized/full/osaka-10.webp" decoding="async" alt="Passeio tranquilo e iluminado durante a noite em Osaka"></button>
+        <button class="shot half" data-category="osaka" data-place="Osaka · 11" data-caption="Uma pausa para ramen" aria-label="Abrir fotografia: ramen"><img loading="lazy" src="assets/optimized/thumbs/osaka-11.webp" data-full="assets/optimized/full/osaka-11.webp" decoding="async" alt="Taça de ramen servida num restaurante de Osaka"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 12" data-caption="A rua desce até ao horizonte" aria-label="Abrir fotografia: rua até ao horizonte"><img loading="lazy" src="assets/optimized/thumbs/osaka-12.webp" data-full="assets/optimized/full/osaka-12.webp" decoding="async" alt="Rua japonesa movimentada, atravessada por cabos elétricos e com montanhas ao fundo"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 13" data-caption="Sob um céu de verão" aria-label="Abrir fotografia: templo sob céu azul"><img loading="lazy" src="assets/optimized/thumbs/osaka-13.webp" data-full="assets/optimized/full/osaka-13.webp" decoding="async" alt="Grande templo japonês diante de um relvado verde e céu azul"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 14" data-caption="Galeria comercial" aria-label="Abrir fotografia: galeria comercial"><img loading="lazy" src="assets/optimized/thumbs/osaka-14.webp" data-full="assets/optimized/full/osaka-14.webp" decoding="async" alt="Galeria comercial coberta, com letreiros japoneses e pessoas a caminhar"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 15" data-caption="Fim de tarde na cidade" aria-label="Abrir fotografia: fim de tarde"><img loading="lazy" src="assets/optimized/thumbs/osaka-15.webp" data-full="assets/optimized/full/osaka-15.webp" decoding="async" alt="Rua japonesa ao fim da tarde, com árvores, cabos e pessoas"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 16" data-caption="Junto ao lago" aria-label="Abrir fotografia: veado junto ao lago"><img loading="lazy" src="assets/optimized/thumbs/osaka-16.webp" data-full="assets/optimized/full/osaka-16.webp" decoding="async" alt="Veado junto a um lago, com edifícios tradicionais e árvores refletidos na água"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 17" data-caption="A escala do templo" aria-label="Abrir fotografia: entrada do templo"><img loading="lazy" src="assets/optimized/thumbs/osaka-17.webp" data-full="assets/optimized/full/osaka-17.webp" decoding="async" alt="Entrada monumental de um templo japonês sob nuvens brancas"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 18" data-caption="Entre árvores e telhados" aria-label="Abrir fotografia: jardim e templo"><img loading="lazy" src="assets/optimized/thumbs/osaka-18.webp" data-full="assets/optimized/full/osaka-18.webp" decoding="async" alt="Edifício tradicional visto entre árvores, jardins e um pequeno lago"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 19" data-caption="Vermelho e pedra" aria-label="Abrir fotografia: pátio de santuário"><img loading="lazy" src="assets/optimized/thumbs/osaka-19.webp" data-full="assets/optimized/full/osaka-19.webp" decoding="async" alt="Pátio de um santuário japonês enquadrado por pilares vermelhos"></button>
+        <button class="shot half" data-category="osaka" data-place="Osaka · 20" data-caption="Banca de rua" aria-label="Abrir fotografia: banca de rua"><img loading="lazy" src="assets/optimized/thumbs/osaka-20.webp" data-full="assets/optimized/full/osaka-20.webp" decoding="async" alt="Banca de comida de rua iluminada, rodeada de clientes"></button>
+        <button class="shot half" data-category="osaka" data-place="Osaka · 21" data-caption="No mercado" aria-label="Abrir fotografia: mercado"><img loading="lazy" src="assets/optimized/thumbs/osaka-21.webp" data-full="assets/optimized/full/osaka-21.webp" decoding="async" alt="Vendedor atrás de uma banca de peixe num mercado japonês"></button>
+        <button class="shot half" data-category="osaka" data-place="Osaka · 22" data-caption="Ao balcão" aria-label="Abrir fotografia: balcão de restaurante"><img loading="lazy" src="assets/optimized/thumbs/osaka-22.webp" data-full="assets/optimized/full/osaka-22.webp" decoding="async" alt="Mulher a trabalhar atrás do balcão de um pequeno restaurante japonês"></button>
+        <button class="shot half" data-category="osaka" data-place="Osaka · 23" data-caption="Madeira e jardim" aria-label="Abrir fotografia: templo e jardim"><img loading="lazy" src="assets/optimized/thumbs/osaka-23.webp" data-full="assets/optimized/full/osaka-23.webp" decoding="async" alt="Edifício tradicional de madeira rodeado por árvores e um pátio de cascalho"></button>
+        <button class="shot half" data-category="osaka" data-place="Osaka · 24" data-caption="Portão entre o verde" aria-label="Abrir fotografia: portão de templo"><img loading="lazy" src="assets/optimized/thumbs/osaka-24.webp" data-full="assets/optimized/full/osaka-24.webp" decoding="async" alt="Grande portão vermelho de templo enquadrado por vegetação verde"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 25" data-caption="Um encontro atento" aria-label="Abrir fotografia: retrato de veado"><img loading="lazy" src="assets/optimized/thumbs/osaka-25.webp" data-full="assets/optimized/full/osaka-25.webp" decoding="async" alt="Retrato frontal de um veado junto a um lago e árvores"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 26" data-caption="Do alto dos degraus" aria-label="Abrir fotografia: pátio do templo"><img loading="lazy" src="assets/optimized/thumbs/osaka-26.webp" data-full="assets/optimized/full/osaka-26.webp" decoding="async" alt="Pátio amplo de templo visto do alto, com visitantes sob o céu azul"></button>
+        <button class="shot half" data-category="osaka" data-place="Osaka · 27" data-caption="Memória em miniatura" aria-label="Abrir fotografia: maquete de templo"><img loading="lazy" src="assets/optimized/thumbs/osaka-27.webp" data-full="assets/optimized/full/osaka-27.webp" decoding="async" alt="Maquete de um complexo de templos e pagodes numa sala de madeira"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 28" data-caption="Entre pessoas e veados" aria-label="Abrir fotografia: veados e visitantes"><img loading="lazy" src="assets/optimized/thumbs/osaka-28.webp" data-full="assets/optimized/full/osaka-28.webp" decoding="async" alt="Veados a acompanhar visitantes num parque japonês"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 29" data-caption="À espera" aria-label="Abrir fotografia: talho"><img loading="lazy" src="assets/optimized/thumbs/osaka-29.webp" data-full="assets/optimized/full/osaka-29.webp" decoding="async" alt="Talhante a preparar carne numa banca de mercado iluminada"></button>
+        <button class="shot half" data-category="osaka" data-place="Osaka · 30" data-caption="Telhados e pinheiros" aria-label="Abrir fotografia: arquitetura tradicional"><img loading="lazy" src="assets/optimized/thumbs/osaka-30.webp" data-full="assets/optimized/full/osaka-30.webp" decoding="async" alt="Casa tradicional japonesa com telhados de cerâmica e pinheiro aparado"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 31" data-caption="Curiosidade" aria-label="Abrir fotografia: veado curioso"><img loading="lazy" src="assets/optimized/thumbs/osaka-31.webp" data-full="assets/optimized/full/osaka-31.webp" decoding="async" alt="Veado de olhar curioso em grande plano"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 32" data-caption="Ponte ao entardecer" aria-label="Abrir fotografia: ponte e jardim"><img loading="lazy" src="assets/optimized/thumbs/osaka-32.webp" data-full="assets/optimized/full/osaka-32.webp" decoding="async" alt="Ponte vermelha sobre um lago, rodeada por jardim e edifícios japoneses"></button>
+        <button class="shot half" data-category="osaka" data-place="Osaka · 33" data-caption="Sob nuvens altas" aria-label="Abrir fotografia: grande templo"><img loading="lazy" src="assets/optimized/thumbs/osaka-33.webp" data-full="assets/optimized/full/osaka-33.webp" decoding="async" alt="Grande templo japonês sob um céu azul com nuvens volumosas"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 34" data-caption="No meio da manada" aria-label="Abrir fotografia: manada de veados"><img loading="lazy" src="assets/optimized/thumbs/osaka-34.webp" data-full="assets/optimized/full/osaka-34.webp" decoding="async" alt="Visitante rodeada por uma grande manada de veados"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 35" data-caption="Templo e céu" aria-label="Abrir fotografia: templo no relvado"><img loading="lazy" src="assets/optimized/thumbs/osaka-35.webp" data-full="assets/optimized/full/osaka-35.webp" decoding="async" alt="Templo monumental diante de relvado verde e céu com nuvens"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 36" data-caption="Entre história e natureza" aria-label="Abrir fotografia: veado e imagem religiosa"><img loading="lazy" src="assets/optimized/thumbs/osaka-36.webp" data-full="assets/optimized/full/osaka-36.webp" decoding="async" alt="Veado diante de um painel com esculturas religiosas japonesas"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 37" data-caption="Paragem na cidade" aria-label="Abrir fotografia: motociclista"><img loading="lazy" src="assets/optimized/thumbs/osaka-37.webp" data-full="assets/optimized/full/osaka-37.webp" decoding="async" alt="Motociclista parado num cruzamento urbano japonês"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 38" data-caption="Sob o vermelho" aria-label="Abrir fotografia: veado junto ao templo"><img loading="lazy" src="assets/optimized/thumbs/osaka-38.webp" data-full="assets/optimized/full/osaka-38.webp" decoding="async" alt="Retrato de um veado diante de uma estrutura vermelha e árvores verdes"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 39" data-caption="O outro lado do cruzamento" aria-label="Abrir fotografia: rua e bicicletas"><img loading="lazy" src="assets/optimized/thumbs/osaka-39.webp" data-full="assets/optimized/full/osaka-39.webp" decoding="async" alt="Rua japonesa com bicicletas, peões e uma galeria comercial ao fundo"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 40" data-caption="À sombra do grande portão" aria-label="Abrir fotografia: grande portão"><img loading="lazy" src="assets/optimized/thumbs/osaka-40.webp" data-full="assets/optimized/full/osaka-40.webp" decoding="async" alt="Grande portão de madeira com multidão e céu azul"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 41" data-caption="Caminho para o templo" aria-label="Abrir fotografia: caminho do templo"><img loading="lazy" src="assets/optimized/thumbs/osaka-41.webp" data-full="assets/optimized/full/osaka-41.webp" decoding="async" alt="Visitantes a caminhar por um pátio de pedra em direção a um templo vermelho"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 42" data-caption="Rua de verão" aria-label="Abrir fotografia: rua comercial"><img loading="lazy" src="assets/optimized/thumbs/osaka-42.webp" data-full="assets/optimized/full/osaka-42.webp" decoding="async" alt="Rua comercial japonesa ensolarada, com letreiros e peões"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 43" data-caption="Silêncio no pátio" aria-label="Abrir fotografia: pátio tradicional"><img loading="lazy" src="assets/optimized/thumbs/osaka-43.webp" data-full="assets/optimized/full/osaka-43.webp" decoding="async" alt="Pátio tranquilo de cascalho diante de uma casa tradicional japonesa"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 44" data-caption="A torre sobre a rua" aria-label="Abrir fotografia: torre urbana"><img loading="lazy" src="assets/optimized/thumbs/osaka-44.webp" data-full="assets/optimized/full/osaka-44.webp" decoding="async" alt="Torre de observação elevada sobre uma rua comercial de Osaka"></button>
+        <button class="shot half" data-category="osaka" data-place="Osaka · 45" data-caption="Um gesto delicado" aria-label="Abrir fotografia: dois veados"><img loading="lazy" src="assets/optimized/thumbs/osaka-45.webp" data-full="assets/optimized/full/osaka-45.webp" decoding="async" alt="Dois veados aproximam os focinhos num gesto delicado"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 46" data-caption="Entre pátios" aria-label="Abrir fotografia: pátio de templo"><img loading="lazy" src="assets/optimized/thumbs/osaka-46.webp" data-full="assets/optimized/full/osaka-46.webp" decoding="async" alt="Pessoa a atravessar um pátio tradicional entre edifícios e árvores"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 47" data-caption="Pausa entre raízes" aria-label="Abrir fotografia: veado deitado"><img loading="lazy" src="assets/optimized/thumbs/osaka-47.webp" data-full="assets/optimized/full/osaka-47.webp" decoding="async" alt="Veado com hastes deitado entre raízes expostas de árvores"></button>
+        <button class="shot tall" data-category="osaka" data-place="Osaka · 48" data-caption="Caminho na sombra" aria-label="Abrir fotografia: caminho no bosque"><img loading="lazy" src="assets/optimized/thumbs/osaka-48.webp" data-full="assets/optimized/full/osaka-48.webp" decoding="async" alt="Caminho curvo atravessa um bosque verde sob luz filtrada"></button>
+        </div>
+      </section>
+      <section class="city-section" id="quioto" data-city="quioto" aria-labelledby="quioto-title">
+        <header class="city-hero quioto">
+          <div class="city-hero-content">
+            <span class="section-tag">Capítulo II · Quioto</span>
+            <div class="city-hero-copy">
+              <h2 id="quioto-title">O ritmo<br>do silêncio</h2>
+              <p>Entre jardins, madeira antiga e ruas estreitas, Quioto convida a abrandar e a reparar nos pequenos gestos.</p>
+            </div>
+          </div>
+        </header>
+        <div class="album-empty"><p>O álbum de Quioto está pronto para receber as tuas fotografias.</p></div>
+      </section>
+      <section class="city-section" id="tokyo" data-city="tokyo" aria-labelledby="tokyo-title">
+        <header class="city-hero tokyo">
+          <div class="city-hero-content">
+            <span class="section-tag">Capítulo III · Tokyo</span>
+            <div class="city-hero-copy">
+              <h2 id="tokyo-title">Sempre em<br>movimento</h2>
+              <p>Uma metrópole de escalas impossíveis, onde a pressa, o detalhe e a luz convivem a cada esquina.</p>
+            </div>
+          </div>
+        </header>
+        <div class="album-empty"><p>O álbum de Tokyo está pronto para receber as tuas fotografias.</p></div>
+      </section>
+    </section>
+  </main>
+
+  <footer id="sobre">
+    <div class="footer-main"><h2>Até à próxima<br>estação.</h2><p class="footer-note">Fotografado e reunido por <strong>O teu nome</strong>. Substitui as imagens e os textos pelos momentos da tua própria viagem.</p></div>
+    <div class="footer-bottom"><span>Japão · 2026</span><a href="#topo">Voltar ao início ↑</a></div>
+  </footer>
+
+  <div class="lightbox" role="dialog" aria-modal="true" aria-label="Visualizador de fotografia">
+    <div class="lightbox-top"><span class="counter">01 / 48</span><button class="close" aria-label="Fechar">×</button></div>
+    <figure><img src="" alt="Fotografia ampliada da viagem ao Japão"></figure>
+    <div class="lightbox-bottom"><button class="prev" aria-label="Fotografia anterior">←</button><span class="caption"></span><button class="next" aria-label="Fotografia seguinte">→</button></div>
+  </div>
+  <script>
+    const shots = [...document.querySelectorAll('.shot')];
+    const citySections = [...document.querySelectorAll('.city-section')];
+    const cityLinks = [...document.querySelectorAll('.filter a')];
+    function activateCity(city) {
+      cityLinks.forEach(link => {
+        const active = link.dataset.cityLink === city;
+        link.classList.toggle('active', active);
+        if (active) link.setAttribute('aria-current', 'true'); else link.removeAttribute('aria-current');
+      });
+    }
+    cityLinks.forEach(link => link.addEventListener('click', () => activateCity(link.dataset.cityLink)));
+    const cityObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) activateCity(entry.target.dataset.city); });
+    }, { rootMargin:'-30% 0px -55% 0px', threshold:0 });
+    citySections.forEach(section => cityObserver.observe(section));
+
+    const box = document.querySelector('.lightbox');
+    const full = box.querySelector('img');
+    const caption = box.querySelector('.caption');
+    const counter = box.querySelector('.counter');
+    let current = 0;
+    function show(index) {
+      current = (index + shots.length) % shots.length;
+      const shot = shots[current];
+      full.src = shot.querySelector('img').dataset.full;
+      full.alt = shot.querySelector('img').alt;
+      caption.textContent = shot.dataset.caption;
+      counter.textContent = `${String(current + 1).padStart(2,'0')} / ${String(shots.length).padStart(2,'0')}`;
+    }
+    function openBox(index) { show(index); box.classList.add('open'); document.body.classList.add('no-scroll'); box.querySelector('.close').focus(); }
+    function closeBox() { box.classList.remove('open'); document.body.classList.remove('no-scroll'); shots[current].focus(); }
+    shots.forEach((shot, i) => shot.addEventListener('click', () => openBox(i)));
+    box.querySelector('.close').addEventListener('click', closeBox);
+    box.querySelector('.prev').addEventListener('click', () => show(current - 1));
+    box.querySelector('.next').addEventListener('click', () => show(current + 1));
+    box.addEventListener('click', e => { if (e.target === box) closeBox(); });
+    document.addEventListener('keydown', e => { if (!box.classList.contains('open')) return; if (e.key === 'Escape') closeBox(); if (e.key === 'ArrowLeft') show(current - 1); if (e.key === 'ArrowRight') show(current + 1); });
+  </script>
+</body>
+</html>
