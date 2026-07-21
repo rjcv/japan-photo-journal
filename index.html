@@ -54,8 +54,6 @@
     .filter { display:flex; gap:.4rem; }
     .filter a { border:1px solid var(--line); border-radius:99px; background:transparent; padding:.55rem .9rem; text-decoration:none; font-size:.67rem; text-transform:uppercase; letter-spacing:.08em; transition:.2s; white-space:nowrap; }
     .filter a.active, .filter a:hover, .filter a:focus-visible { background:var(--ink); color:var(--paper); }
-    .filter .private-link { border-color:var(--red); color:var(--red); }
-    .filter .private-link:hover, .filter .private-link:focus-visible { background:var(--red); color:white; }
     .city-section { margin-top:clamp(1rem, 3vw, 2.5rem); scroll-margin-top:5.5rem; }
     .city-hero { min-height: 82svh; margin-bottom: clamp(1rem, 2vw, 1.5rem); color: white; position: relative; overflow: hidden; display: flex; align-items: end; background: center 46% / cover fixed no-repeat; }
     .city-hero.osaka { background-image: url('assets/optimized/headers/osaka-05.webp'); }
@@ -148,7 +146,7 @@
       <div class="gallery-head">
         <p>Fragmentos do caminho</p>
         <nav class="filter" aria-label="Ir para o álbum de uma cidade">
-          <a class="active" data-city-link="all" href="#fotografias" aria-current="true">Todas</a><a data-city-link="osaka" href="#osaka">Osaka</a><a data-city-link="kyoto" href="#kyoto">Kyoto</a><a data-city-link="tokyo" href="#tokyo">Tokyo</a><a class="private-link" href="https://drive.google.com/drive/folders/1ZzPArthgBVmmmpyFkTeuRRHoejiB8l5F?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Abrir álbum privado no Google Drive numa nova janela">Privado ↗</a>
+          <a class="active" data-city-link="all" href="#fotografias" aria-current="true">Todas</a><a data-city-link="osaka" href="#osaka">Osaka</a><a data-city-link="kyoto" href="#kyoto">Kyoto</a><a data-city-link="tokyo" href="#tokyo">Tokyo</a><a href="https://drive.google.com/drive/folders/1ZzPArthgBVmmmpyFkTeuRRHoejiB8l5F?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Abrir álbum privado no Google Drive numa nova janela">Privado</a>
         </nav>
       </div>
       <section class="city-section" id="osaka" data-city="osaka" aria-labelledby="osaka-title">
