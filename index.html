@@ -367,12 +367,7 @@
             </div>
           </div>
         </header>
-        <div class="grid">
-          <button class="shot tall" data-category="tokyo" data-place="Tokyo · 01" data-caption="O leilão do atum" aria-label="Abrir fotografia: o leilão do atum"><img loading="lazy" src="assets/optimized/thumbs/tokyo-01.webp" data-full="assets/optimized/full/tokyo-01.webp" decoding="async" alt="Trabalhadores junto a grandes atuns no mercado de peixe de Tokyo"></button>
-          <button class="shot tall" data-category="tokyo" data-place="Tokyo · 02" data-caption="O mercado visto de cima" aria-label="Abrir fotografia: mercado visto de cima"><img loading="lazy" src="assets/optimized/thumbs/tokyo-02.webp" data-full="assets/optimized/full/tokyo-02.webp" decoding="async" alt="Vista elevada da zona de trabalho e leilão no mercado de peixe de Tokyo"></button>
-          <button class="shot tall" data-category="tokyo" data-place="Tokyo · 03" data-caption="A nave do mercado" aria-label="Abrir fotografia: nave do mercado"><img loading="lazy" src="assets/optimized/thumbs/tokyo-03.webp" data-full="assets/optimized/full/tokyo-03.webp" decoding="async" alt="Vista geral do grande pavilhão do mercado de peixe de Tokyo"></button>
-          <button class="shot tall" data-category="tokyo" data-place="Tokyo · 04" data-caption="Wasabi fresco" aria-label="Abrir fotografia: wasabi fresco"><img loading="lazy" src="assets/optimized/thumbs/tokyo-04.webp" data-full="assets/optimized/full/tokyo-04.webp" decoding="async" alt="Raízes de wasabi expostas numa banca de mercado em Tokyo"></button>
-        </div>
+        <div class="grid compact" id="tokyo-grid"></div>
       </section>
     </section>
   </main>
@@ -388,6 +383,14 @@
     <div class="lightbox-bottom"><button class="prev" aria-label="Fotografia anterior">←</button><span class="caption"></span><button class="next" aria-label="Fotografia seguinte">→</button></div>
   </div>
   <script>
+    const tokyoGrid = document.querySelector('#tokyo-grid');
+    const tokyoPhotoCount = 68;
+    tokyoGrid.innerHTML = Array.from({ length: tokyoPhotoCount }, (_, index) => {
+      const number = String(index + 1).padStart(2, '0');
+      const label = `Tokyo · ${number}`;
+      return `<button class="shot" data-category="tokyo" data-place="${label}" data-caption="${label}" aria-label="Abrir fotografia ${number} de Tokyo"><img loading="lazy" src="assets/optimized/thumbs/tokyo-${number}.webp" data-full="assets/optimized/full/tokyo-${number}.webp" decoding="async" alt="Fotografia ${number} da viagem a Tokyo"></button>`;
+    }).join('');
+
     const shots = [...document.querySelectorAll('.shot')];
     const citySections = [...document.querySelectorAll('.city-section')];
     const cityLinks = [...document.querySelectorAll('.filter [data-city-link]')];
