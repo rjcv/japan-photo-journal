@@ -378,13 +378,13 @@
   </footer>
 
   <div class="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
-    <div class="lightbox-top"><span class="counter">01 / 233</span><button class="close" aria-label="Close">×</button></div>
+    <div class="lightbox-top"><span class="counter">01 / 339</span><button class="close" aria-label="Close">×</button></div>
     <figure><img src="" alt="Enlarged photograph from the journey through Japan"></figure>
     <div class="lightbox-bottom"><button class="prev" aria-label="Previous photograph">←</button><span class="caption"></span><button class="next" aria-label="Next photograph">→</button></div>
   </div>
   <script>
     const tokyoGrid = document.querySelector('#tokyo-grid');
-    const tokyoPhotoCount = 68;
+    const tokyoPhotoCount = 174;
     tokyoGrid.innerHTML = Array.from({ length: tokyoPhotoCount }, (_, index) => {
       const number = String(index + 1).padStart(2, '0');
       const label = `Tokyo · ${number}`;
