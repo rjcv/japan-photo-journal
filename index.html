@@ -85,10 +85,10 @@
     .grid.compact .shot.wide,
     .grid.compact .shot.half { grid-column:span 1; min-height:0; aspect-ratio:4/3; align-self:stretch; }
     footer { padding: clamp(4rem, 9vw, 8rem) var(--pad) 2rem; }
-    .footer-main { display:grid; grid-template-columns:2fr 1fr; gap:3rem; border-bottom:1px solid var(--line); padding-bottom:5rem; }
+    .footer-main { border-bottom:1px solid var(--line); padding-bottom:5rem; }
     footer h2 { margin:0; font-family:Georgia,serif; font-size:clamp(3rem, 8vw, 8rem); line-height:.86; font-weight:400; letter-spacing:-.06em; }
-    .footer-note { align-self:end; max-width:300px; font-size:.8rem; line-height:1.65; color:var(--muted); }
-    .footer-bottom { padding-top:1.4rem; display:flex; justify-content:space-between; text-transform:uppercase; font-size:.62rem; letter-spacing:.12em; }
+    .footer-bottom { padding-top:1.4rem; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; text-transform:uppercase; font-size:.62rem; letter-spacing:.12em; }
+    .footer-bottom a { justify-self:end; }
     .lightbox { display:none; position:fixed; z-index:30; inset:0; background:rgba(13,14,12,.96); color:white; padding:clamp(1rem,3vw,2.5rem); }
     .lightbox.open { display:grid; grid-template-rows:auto 1fr auto; animation:fade .25s both; }
     @keyframes fade { from { opacity:0; } }
@@ -125,7 +125,7 @@
       .grid.compact .shot.tall,
       .grid.compact .shot.wide,
       .grid.compact .shot.half { grid-column:span 1; min-height:0; aspect-ratio:4/3; }
-      .footer-main { grid-template-columns:1fr; }
+      .footer-bottom { font-size:.52rem; letter-spacing:.08em; }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } *, *::before, *::after { animation:none!important; transition:none!important; } }
   </style>
@@ -373,8 +373,8 @@
   </main>
 
   <footer id="sobre">
-    <div class="footer-main"><h2>Until the next<br>station.</h2><p class="footer-note">Curated by rjcvilhena@gmail.com</p></div>
-    <div class="footer-bottom"><span>Japan · 2026</span><a href="#topo">Back to top ↑</a></div>
+    <div class="footer-main"><h2>Until the next<br>station.</h2></div>
+    <div class="footer-bottom"><span>Japan · 2026</span><span>Curated by rjcvilhena@gmail.com</span><a href="#topo">Back to top ↑</a></div>
   </footer>
 
   <div class="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
